@@ -1,0 +1,47 @@
+{
+  "name": "create-next-pro",
+  "version": "1.0.0",
+  "description": "Scaffold a production-ready Next.js 15 app with TypeScript, tRPC, Supabase, Stripe, AI, and more",
+  "type": "module",
+  "bin": {
+    "create-next-pro": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx watch src/index.ts",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "nextjs",
+    "cli",
+    "scaffold",
+    "trpc",
+    "supabase",
+    "stripe",
+    "ai"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@clack/prompts": "^0.8.2",
+    "commander": "^12.1.0",
+    "execa": "^9.4.0",
+    "fs-extra": "^11.2.0",
+    "picocolors": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^22.10.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ]
+}
+
