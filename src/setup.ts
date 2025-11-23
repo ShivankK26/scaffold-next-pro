@@ -23,10 +23,13 @@ export async function enhanceNextApp(
   projectPath: string,
   integrations: string[]
 ) {
+  // Normalize integrations array (handle any case issues)
+  const normalizedIntegrations = integrations.map((i) => i.toLowerCase().trim());
+  
   // Update package.json
   const packageJsonPath = path.join(projectPath, "package.json");
   const packageJson = await fs.readJson(packageJsonPath);
-  const enhancedPackageJson = generatePackageJson(packageJson, integrations);
+  const enhancedPackageJson = generatePackageJson(packageJson, normalizedIntegrations);
   await fs.writeJson(packageJsonPath, enhancedPackageJson, { spaces: 2 });
 
   // Update next.config to enable standalone output for Docker
@@ -42,11 +45,11 @@ export async function enhanceNextApp(
   // Generate env files
   await fs.writeFile(
     path.join(projectPath, ".env.example"),
-    generateEnvExample(integrations)
+    generateEnvExample(normalizedIntegrations)
   );
   await fs.writeFile(
     path.join(projectPath, "src/env.mjs"),
-    generateEnvMjs(integrations)
+    generateEnvMjs(normalizedIntegrations)
   );
 
   // Generate Docker files
@@ -98,20 +101,20 @@ export async function enhanceNextApp(
   // tRPC is always included as it's part of the base stack
   await generateTRPCSetup(projectPath);
 
-  if (integrations.includes("supabase")) {
+  if (normalizedIntegrations.includes("supabase")) {
     await generateSupabaseSetup(projectPath);
   }
 
-  if (integrations.includes("stripe")) {
+  if (normalizedIntegrations.includes("stripe")) {
     await generateStripeSetup(projectPath);
   }
 
-  if (integrations.includes("ai")) {
+  if (normalizedIntegrations.includes("ai")) {
     await generateAISetup(projectPath);
   }
 
   // Generate example pages
-  await generateExamplePages(projectPath, integrations);
+  await generateExamplePages(projectPath, normalizedIntegrations);
 
   // Update ESLint config
   await updateESLintConfig(projectPath);
@@ -194,6 +197,8 @@ export async function installDependencies(
   projectPath: string,
   integrations: string[]
 ) {
+  // Normalize integrations array
+  const normalizedIntegrations = integrations.map((i) => i.toLowerCase().trim());
   const deps: string[] = [
     "zod",
     "@tanstack/react-query",
@@ -217,15 +222,15 @@ export async function installDependencies(
     "cz-conventional-changelog",
   ];
 
-  if (integrations.includes("supabase")) {
+  if (normalizedIntegrations.includes("supabase")) {
     deps.push("@supabase/supabase-js");
   }
 
-  if (integrations.includes("stripe")) {
+  if (normalizedIntegrations.includes("stripe")) {
     deps.push("stripe");
   }
 
-  if (integrations.includes("ai")) {
+  if (normalizedIntegrations.includes("ai")) {
     deps.push("ai", "openai");
   }
 

@@ -2,6 +2,9 @@ import fs from "fs-extra";
 import * as path from "path";
 
 export function generatePackageJson(basePackageJson: any, integrations: string[]) {
+  // Normalize integrations
+  const normalizedIntegrations = integrations.map((i) => i.toLowerCase().trim());
+  
   const scripts = {
     ...basePackageJson.scripts,
     "type-check": "tsc --noEmit",
@@ -24,15 +27,15 @@ export function generatePackageJson(basePackageJson: any, integrations: string[]
     "framer-motion": "^11.15.0",
   };
 
-  if (integrations.includes("supabase")) {
+  if (normalizedIntegrations.includes("supabase")) {
     dependencies["@supabase/supabase-js"] = "^2.47.10";
   }
 
-  if (integrations.includes("stripe")) {
+  if (normalizedIntegrations.includes("stripe")) {
     dependencies["stripe"] = "^17.4.0";
   }
 
-  if (integrations.includes("ai")) {
+  if (normalizedIntegrations.includes("ai")) {
     dependencies["ai"] = "^3.4.36";
     dependencies["openai"] = "^4.73.1";
   }

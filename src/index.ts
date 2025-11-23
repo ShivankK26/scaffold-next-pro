@@ -58,21 +58,48 @@ program
       } else if (options.with) {
         integrations = (options.with as string).split(",").map((i) => i.trim());
       } else {
-        const selected = await p.multiselect({
-          message: "Which integrations would you like to include?",
-          options: [
-            { value: "stripe", label: "Stripe (payments)" },
-            { value: "supabase", label: "Supabase (database & auth)" },
-            { value: "ai", label: "AI (Vercel AI SDK / OpenAI)" },
-          ],
-          required: false,
+        // Use individual confirm prompts for better reliability
+        const stripeSelected = await p.confirm({
+          message: "Include Stripe (payments)?",
+          initialValue: false,
         });
-
-        if (p.isCancel(selected)) {
+        
+        if (p.isCancel(stripeSelected)) {
           p.cancel("Operation cancelled.");
           process.exit(0);
         }
-        integrations = selected as string[];
+        
+        const supabaseSelected = await p.confirm({
+          message: "Include Supabase (database & auth)?",
+          initialValue: false,
+        });
+        
+        if (p.isCancel(supabaseSelected)) {
+          p.cancel("Operation cancelled.");
+          process.exit(0);
+        }
+        
+        const aiSelected = await p.confirm({
+          message: "Include AI (Vercel AI SDK / OpenAI)?",
+          initialValue: false,
+        });
+        
+        if (p.isCancel(aiSelected)) {
+          p.cancel("Operation cancelled.");
+          process.exit(0);
+        }
+        
+        // Build integrations array
+        if (stripeSelected) integrations.push("stripe");
+        if (supabaseSelected) integrations.push("supabase");
+        if (aiSelected) integrations.push("ai");
+        
+        // Show what was selected
+        if (integrations.length === 0) {
+          p.note("No integrations selected. You can add them later manually.", "Info");
+        } else {
+          p.note(`Selected: ${integrations.join(", ")}`, "Integrations");
+        }
       }
 
       const spinner = p.spinner();
@@ -102,6 +129,10 @@ program
 
       // Enhance the project
       spinner.start("Enhancing project with production configurations...");
+      // Debug: Log integrations
+      if (integrations.length > 0) {
+        console.log(`\n📦 Selected integrations: ${integrations.join(", ")}\n`);
+      }
       await enhanceNextApp(projectPath, integrations);
       spinner.stop("✅ Project enhanced");
 
