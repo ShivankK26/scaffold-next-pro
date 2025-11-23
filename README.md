@@ -1,4 +1,4 @@
-# create-next-pro
+# scaffold-next-pro
 
 A CLI tool to scaffold production-ready Next.js 15 applications with TypeScript, tRPC, Supabase, Stripe, AI integrations, and more.
 
@@ -21,7 +21,7 @@ A CLI tool to scaffold production-ready Next.js 15 applications with TypeScript,
 ## Usage
 
 ```bash
-npx create-next-pro my-app
+npx scaffold-next-pro my-app
 ```
 
 ### Options

@@ -9,7 +9,6 @@ import {
   generateDockerignore,
   generateVercelJson,
   generateGitHubActions,
-  generateHuskyConfig,
   generateLintStagedConfig,
   generateCommitlintConfig,
   generateTRPCSetup,

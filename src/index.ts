@@ -8,7 +8,6 @@ import * as path from "path";
 import { fileURLToPath } from "url";
 import pc from "picocolors";
 import {
-  setupProject,
   enhanceNextApp,
   installDependencies,
   initializeGit,
@@ -19,7 +18,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 program
-  .name("create-next-pro")
+  .name("scaffold-next-pro")
   .description("Scaffold a production-ready Next.js 15 app")
   .argument("[project-name]", "Name of the project")
   .option("--with <integrations>", "Comma-separated list of integrations (stripe,supabase,ai)")

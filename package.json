@@ -1,10 +1,10 @@
 {
-  "name": "create-next-pro",
+  "name": "scaffold-next-pro",
   "version": "1.0.0",
   "description": "Scaffold a production-ready Next.js 15 app with TypeScript, tRPC, Supabase, Stripe, AI, and more",
   "type": "module",
   "bin": {
-    "create-next-pro": "./dist/index.js"
+    "scaffold-next-pro": "./dist/index.js"
   },
   "scripts": {
     "build": "tsc",
