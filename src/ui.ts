@@ -7,7 +7,7 @@ export function showIntro() {
       pc.cyan(`
 ╔═══════════════════════════════════════════════════════╗
 ║                                                       ║
-║          ${pc.bold(pc.white("create-next-pro"))}          ║
+║          ${pc.bold(pc.white("scaffold-next-pro"))}        ║
 ║                                                       ║
 ║     Production-ready Next.js 15 scaffolding tool     ║
 ║                                                       ║
