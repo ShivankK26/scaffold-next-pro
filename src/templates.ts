@@ -72,10 +72,10 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
   if (integrations.includes("supabase")) {
     content += `# Supabase
 # Get these from your Supabase project settings: https://app.supabase.com/project/_/settings/api
-# Example test credentials (replace with your actual values):
-NEXT_PUBLIC_SUPABASE_URL=https://abcdefghijklmnop.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFiY2RlZmdoaWprbG1ub3AiLCJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MDE5OTIwMCwiZXhwIjoxOTU1Nzc1MjAwfQ.example_anon_key_replace_with_your_actual_key
-SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFiY2RlZmdoaWprbG1ub3AiLCJyb2xlIjoic2VydmljZV9yb2xlIiwiaWF0IjoxNjQwMTk5MjAwLCJleHAiOjE5NTU3NzUyMDB9.example_service_role_key_replace_with_your_actual_key
+# Replace with your actual values from your Supabase project
+NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.EXAMPLE_REPLACE_WITH_YOUR_ACTUAL_ANON_KEY
+SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.EXAMPLE_REPLACE_WITH_YOUR_ACTUAL_SERVICE_ROLE_KEY
 
 `;
   }
@@ -83,11 +83,11 @@ SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhY
   if (integrations.includes("stripe")) {
     content += `# Stripe
 # Get these from your Stripe Dashboard: https://dashboard.stripe.com/test/apikeys
-# Test keys (safe to use in development):
-STRIPE_SECRET_KEY=sk_test_51AbCdEfGhIjKlMnOpQrStUvWxYz1234567890AbCdEfGhIjKlMnOpQrStUvWxYz1234567890
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_51AbCdEfGhIjKlMnOpQrStUvWxYz1234567890AbCdEfGhIjKlMnOpQrStUvWxYz1234567890
+# Replace with your actual test keys from Stripe Dashboard
+STRIPE_SECRET_KEY=sk_test_51EXAMPLE_REPLACE_WITH_YOUR_ACTUAL_KEY_1234567890
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_51EXAMPLE_REPLACE_WITH_YOUR_ACTUAL_KEY_1234567890
 # Webhook secret (get from Stripe Dashboard > Developers > Webhooks)
-STRIPE_WEBHOOK_SECRET=whsec_test_1234567890abcdefghijklmnopqrstuvwxyz
+STRIPE_WEBHOOK_SECRET=whsec_EXAMPLE_REPLACE_WITH_YOUR_ACTUAL_WEBHOOK_SECRET
 
 `;
   }
@@ -95,8 +95,8 @@ STRIPE_WEBHOOK_SECRET=whsec_test_1234567890abcdefghijklmnopqrstuvwxyz
   if (integrations.includes("ai")) {
     content += `# OpenAI
 # Get your API key from: https://platform.openai.com/api-keys
-# Example test key format (replace with your actual key):
-OPENAI_API_KEY=sk-test-1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz
+# Replace with your actual OpenAI API key
+OPENAI_API_KEY=sk-EXAMPLE_REPLACE_WITH_YOUR_ACTUAL_OPENAI_API_KEY
 
 `;
   }
